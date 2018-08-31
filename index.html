@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Safari Word Guess Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Sarina" rel="stylesheet">
+    <script src="assets/javascript/game.js" defer></script>
+</head>
+
+<body>
+    <div class="container text-center">
+        <div class="header">
+            <h1 class="main-title">Hangman</h1>
+            <h2 class="sub-title">Safari</h2>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                Press any key to get started
+            </div>
+            <div class="row">
+                <div class="card-body col-6 tally border-right">
+                    <div class="row">
+                        <p class="col-1" </p>
+                            <p class="score col-4 border-bottom" id="wins">Wins</p>
+                            <p class="col-2"></p>
+                            <p class="score col-4 border-bottom" id="losses">Losses</p>
+                            <p class="col-1"></p>
+                    </div>
+                    <P class="guesses-left">Guesses Left</P>
+                    <p class="guesses-left" id="guesses-left"></p>
+                    <p class="letters-guessed">Letters Already Guessed</p>
+                    <p class="letters-guessed" id="letters-guessed"></p>
+                </div>
+                <div class="card-body col-6 word">
+                    <div class="word-blank"></div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>
