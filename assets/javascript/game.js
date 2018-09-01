@@ -33,20 +33,22 @@ var winsText = document.getElementById("wins-text");
 var lossesText = document.getElementById("losses-text");
 var guessesLeft = document.getElementById("guesses-left");
 var lettersGuessed = document.getElementById("letters-guessed");
-var wordBlank = document.getElementById("word-blank");
+var letterBlank = document.getElementById("word-blank");
 
 // define function: on key up, computer randomly selects word from array
 function getWord() {
     wordtoGuess = words[Math.floor(Math.random() * words.length)];
     console.log(wordtoGuess);
 
-    // parse letters into divs
-    // concatenate divs on screen (letters not visible)
-    
+    // parse letters into divs   
     for (var i = 0; i < wordtoGuess.length; i++) {
-        var wordBlank = document.createElement("div");
-        wordBlank.textContent = wordtoGuess[i];
-        wordBlank.append(wordBlank);        
+        var letterBlank = document.createElement("div");
+        letterBlank.textContent = wordtoGuess.charAt(i);
+
+        // concatenate divs on screen
+        letterBlank.append(letterBlank);      
+        
+        // hide letters
     }
 
 }
