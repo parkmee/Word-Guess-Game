@@ -67,11 +67,13 @@ document.onkeyup = function (event) {
     // console.log(lettersInWord.join(""));
     if (currentWord === lettersInWord.join("")) {
         wins++;
+        var winSound = document.createElement("audio");
+        winSound.setAttribute("src", "../Word-Guess-Game/assets/sounds/elephant1.mp3");
         reset();
     }
 
     if (guesses === 0) {
-        losses--;
+        losses++;
         errorMsg.textContent = "Sorry! You lose!";
         reset();
     }
@@ -83,7 +85,6 @@ document.onkeyup = function (event) {
         remainingLetters = 0;
         compareLength = 0;
     }
-
 
     winsText.textContent = "Wins: " + wins;
     lossesText.textContent = "Losses: " + losses;

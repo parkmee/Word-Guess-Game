@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-100">
 
 <head>
     <meta charset="utf-8" />
@@ -13,18 +13,18 @@
     <script src="assets/javascript/game.js" defer></script>
 </head>
 
-<body>
-    <div class="container text-center">
+<body class="h-100">
+    <div class="container text-center h-50 mx-auto">
         <div class="header">
             <h1 class="main-title">Hangman</h1>
             <h2 class="sub-title">Safari</h2>
         </div>
-        <div class="card">
-            <div class="card-header" id="directions-text">
+        <div class="card text-dark rounded">
+            <div class="card-header bg-secondary" id="directions-text">
                 Press any key to get started
             </div>
             <div class="row">
-                <div class="card-body col-6 tally border-right">
+                <div class="card-body col-6 tally border-right border-dark">
                     <div class="row">
                         <p class="col-1" </p>
                             <p class="score col-4" id="wins-text">Wins: </p>
@@ -37,16 +37,13 @@
                 </div>
                 <div class="card-body col-6 word">
                     <div class="col-12">Current Word</div>
-                    <h2 class="col-12" id="word-blank"></h2>
+                    <h3 class="col-12" id="word-blank"></h3>
                     <br>
                     <div id="error-msg"></div>
                 </div>
             </div>
-
-
         </div>
     </div>
-
 </body>
 
 </html>

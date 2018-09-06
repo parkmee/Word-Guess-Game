@@ -1,0 +1,34 @@
+body {
+    background-image: url("../images/elephants.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+h1 {
+    font-family: permanent marker;
+    font-size: 100px;
+}
+
+h2 {
+    font-family: sarina;
+    font-size: 70px;
+}
+
+.card-header {
+    font-weight: bolder;
+    color: beige;
+}
+
+.card {
+    color: black;
+    opacity: 0.8;
+}
+
+p {
+    opacity: 1;
+}
+
+div.card {
+    border-width: 2px;
+    border-color: darkolivegreen;
+}
