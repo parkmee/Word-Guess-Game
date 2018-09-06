@@ -26,7 +26,7 @@ var losses = 0;
 var guesses = 9;
 var currentWord = "";
 var gameStart = true;
-var wordPicked = false;
+var correctLetter = false;
 var lettersGuessed = [];
 var lettersInWord = [];
 var remainingLetters = 0;
@@ -49,9 +49,10 @@ document.onkeyup = function (event) {
 
     if (userGuess.toLowerCase() >= "a" && userGuess.toLowerCase() <= "z") {
         fillInBlanks();
-        console.log("Remaining letters: " + remainingLetters);
-        console.log("Compare length: " + compareLength);
+        console.log("after fill in rl: " + remainingLetters);
+        console.log("after fill in cl: " + compareLength);
         updateGuesses();
+        correctLetter = false;
     } else {
         // error message
         errorMsg.textContent = "Enter a letter, please!"
@@ -66,10 +67,23 @@ document.onkeyup = function (event) {
     // console.log(lettersInWord.join(""));
     if (currentWord === lettersInWord.join("")) {
         wins++;
+        reset();
+    }
+
+    if (guesses === 0) {
+        losses--;
+        errorMsg.textContent = "Sorry! You lose!";
+        reset();
+    }
+
+    function reset() {
         lettersInWord.length = 0;
         gameStart = true;
         directionsText.textContent = "Press any key to play again";
+        remainingLetters = 0;
+        compareLength = 0;
     }
+
 
     winsText.textContent = "Wins: " + wins;
     lossesText.textContent = "Losses: " + losses;
@@ -79,6 +93,7 @@ document.onkeyup = function (event) {
     function fillInBlanks() {
         for (var j = 0; j < currentWord.length; j++) {
             if (userGuess.toLowerCase() === currentWord.charAt(j)) {
+                correctLetter = true;
                 if (lettersInWord[j] === userGuess) {
                     errorMsg.textContent = "Enter a new letter!";
                 } else {
@@ -86,36 +101,35 @@ document.onkeyup = function (event) {
                     lettersInWord[j] = userGuess;
                 }
                 wordBlankText.textContent = lettersInWord.join(" ");
-                console.log("re: " + remainingLetters);
-                console.log("cl: " + compareLength);
+                console.log("during fill in re: " + remainingLetters);
+                console.log("during fill in cl: " + compareLength);
+                console.log("correct letter 2: " + correctLetter);
             }
         }
     }
 
     function updateGuesses() {
-
-      /*   if (remainingLetters < compareLength) {
-            console.log("Remaining letters: " + remainingLetters);
-            console.log("Compare length: " + compareLength);
+        if (remainingLetters < compareLength) {
             compareLength = remainingLetters;
-            return;
-        } else if (remainingLetters === compareLength) {
+            console.log("match re: " + remainingLetters);
+            console.log("match cl: " + compareLength);
+            console.log("correct letter: " + correctLetter);
+            console.log("rl<cl");
+        } else if (remainingLetters === compareLength && correctLetter === false) {
+            console.log("rl===cl")
             for (var i = 0; i < lettersGuessed.length; i++) {
-                if (userGuess === lettersInWord[i]) {
-                    return;
-                } else
                 if (userGuess === lettersGuessed[i]) {
-                    errorMsg.textContent = "Enter a new letter!";
+                    errorMsg.textContent = "You already guessed this letter!";
                     return;
-                }
+                } 
             }
-            guesses--;
             lettersGuessed.push(userGuess);
-            console.log(lettersGuessed);
+            console.log("letters guessed: " + lettersGuessed);
+            console.log("correct letter: " + correctLetter);
+            console.log("no match re: " + remainingLetters);
+            console.log("no match cl: " + compareLength);            
+            guesses--;
         }
-        compareLength = remainingLetters;
-        console.log("Remaining letters: " + remainingLetters);
-        console.log("Compare length: " + compareLength); */
     }
 
     function getWord() {
@@ -130,7 +144,10 @@ document.onkeyup = function (event) {
         console.log("bottom rl: " + remainingLetters);
         console.log("bottom cl: " + compareLength);
         lettersGuessed.length = 0;
+        lettersGuessedText.textContent = "Letters Guessed:";
         gameStart = false;
         guesses = 9;
     }
+    console.log(correctLetter);
+    console.log(currentWord);
 }
