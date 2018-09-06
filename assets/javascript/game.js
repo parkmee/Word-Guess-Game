@@ -39,18 +39,16 @@ var guessesLeftText = document.getElementById("guesses-left-text");
 var lettersGuessedText = document.getElementById("letters-guessed-text");
 var wordBlankText = document.getElementById("word-blank");
 var errorMsg = document.getElementById("error-msg");
+var audio = document.getElementById("win-sound");
 
 document.onkeyup = function (event) {
-
+    
     var userGuess = event.key;
-    console.log(userGuess);
 
     errorMsg.textContent = "";
 
     if (userGuess.toLowerCase() >= "a" && userGuess.toLowerCase() <= "z") {
         fillInBlanks();
-        console.log("after fill in rl: " + remainingLetters);
-        console.log("after fill in cl: " + compareLength);
         updateGuesses();
         correctLetter = false;
     } else {
@@ -67,8 +65,7 @@ document.onkeyup = function (event) {
     // console.log(lettersInWord.join(""));
     if (currentWord === lettersInWord.join("")) {
         wins++;
-        var winSound = document.createElement("audio");
-        winSound.setAttribute("src", "../Word-Guess-Game/assets/sounds/elephant1.mp3");
+        audio.play();
         reset();
     }
 
@@ -102,9 +99,6 @@ document.onkeyup = function (event) {
                     lettersInWord[j] = userGuess;
                 }
                 wordBlankText.textContent = lettersInWord.join(" ");
-                console.log("during fill in re: " + remainingLetters);
-                console.log("during fill in cl: " + compareLength);
-                console.log("correct letter 2: " + correctLetter);
             }
         }
     }
@@ -112,12 +106,7 @@ document.onkeyup = function (event) {
     function updateGuesses() {
         if (remainingLetters < compareLength) {
             compareLength = remainingLetters;
-            console.log("match re: " + remainingLetters);
-            console.log("match cl: " + compareLength);
-            console.log("correct letter: " + correctLetter);
-            console.log("rl<cl");
         } else if (remainingLetters === compareLength && correctLetter === false) {
-            console.log("rl===cl")
             for (var i = 0; i < lettersGuessed.length; i++) {
                 if (userGuess === lettersGuessed[i]) {
                     errorMsg.textContent = "You already guessed this letter!";
@@ -125,10 +114,6 @@ document.onkeyup = function (event) {
                 } 
             }
             lettersGuessed.push(userGuess);
-            console.log("letters guessed: " + lettersGuessed);
-            console.log("correct letter: " + correctLetter);
-            console.log("no match re: " + remainingLetters);
-            console.log("no match cl: " + compareLength);            
             guesses--;
         }
     }
@@ -142,13 +127,9 @@ document.onkeyup = function (event) {
         wordBlankText.textContent = lettersInWord.join(" ");
         remainingLetters = currentWord.length;
         compareLength = currentWord.length;
-        console.log("bottom rl: " + remainingLetters);
-        console.log("bottom cl: " + compareLength);
         lettersGuessed.length = 0;
         lettersGuessedText.textContent = "Letters Guessed:";
         gameStart = false;
         guesses = 9;
     }
-    console.log(correctLetter);
-    console.log(currentWord);
 }
