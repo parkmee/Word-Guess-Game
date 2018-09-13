@@ -123,6 +123,7 @@ document.onkeyup = function (event) {
         console.log(currentWord);
         for (var i = 0; i < currentWord.length; i++) {
             lettersInWord.push("_");
+            console.log(lettersInWord);
         };
         wordBlankText.textContent = lettersInWord.join(" ");
         remainingLetters = currentWord.length;
